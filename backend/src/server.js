@@ -21,6 +21,19 @@ app.use('/api/images', imagesRouter);
 app.use('/api/history', historyRouter);
 app.use('/api/barcode', barcodeRouter);
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Insight Mate API Server is running!',
+    endpoints: {
+      health: '/api/health',
+      chat: '/api/chat',
+      images: '/api/images',
+      history: '/api/history',
+      barcode: '/api/barcode/lookup'
+    }
+  });
+});
+
 const PORT = process.env.PORT || 8080;
 const MONGO_URI = process.env.MONGO_URI || '';
 
