@@ -7,6 +7,7 @@ import healthRouter from './routes/health.js';
 import chatRouter from './routes/chat.js';
 import imagesRouter from './routes/images.js';
 import historyRouter from './routes/history.js';
+import barcodeRouter from './routes/barcode.js';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use('/api/health', healthRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/images', imagesRouter);
 app.use('/api/history', historyRouter);
+app.use('/api/barcode', barcodeRouter);
 
 const PORT = process.env.PORT || 8080;
 const MONGO_URI = process.env.MONGO_URI || '';

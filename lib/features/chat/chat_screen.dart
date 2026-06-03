@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../shared/services/history_service.dart';
 import '../../shared/models/history_item.dart';
 import '../../shared/services/api_client.dart';
+import '../settings/settings_controller.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -30,10 +31,17 @@ class _ChatScreenState extends State<ChatScreen> {
     });
     String reply = '';
     try {
-      reply = await ApiClient().chat([
-        for (final m in _messages) {'role': m.role, 'content': m.text},
-        {'role': 'user', 'content': text},
-      ]);
+      final settings = context.read<SettingsController>();
+      final apiKey = settings.aiProvider == 'gemini' ? settings.geminiApiKey : settings.openaiApiKey;
+      
+      reply = await ApiClient().chat(
+        messages: [
+          for (final m in _messages) {'role': m.role, 'content': m.text},
+          {'role': 'user', 'content': text},
+        ],
+        provider: settings.aiProvider,
+        apiKey: apiKey,
+      );
     } catch (_) {
       reply = 'Echo: $text';
     }

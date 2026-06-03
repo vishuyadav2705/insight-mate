@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../chat/chat_screen.dart';
 import '../scan/scan_screen.dart';
 import '../speech/speech_screen.dart';
-import '../vision/object_detection_screen.dart';
+import '../analysis/data_analysis_screen.dart';
 import '../studio/text_to_image_screen.dart';
 import '../history/history_screen.dart';
 import '../settings/settings_screen.dart';
@@ -25,7 +25,7 @@ class _ShellScreenState extends State<ShellScreen> {
     ChatScreen(),
     SpeechScreen(),
     ScanScreen(),
-    ObjectDetectionScreen(),
+    DataAnalysisScreen(),
     TextToImageScreen(),
   ];
 
@@ -65,7 +65,7 @@ class _ShellScreenState extends State<ShellScreen> {
           NavigationDestination(icon: Icon(Icons.chat_outlined), selectedIcon: Icon(Icons.chat), label: 'Chat'),
           NavigationDestination(icon: Icon(Icons.mic_none), selectedIcon: Icon(Icons.mic), label: 'Voice'),
           NavigationDestination(icon: Icon(Icons.qr_code_scanner), selectedIcon: Icon(Icons.qr_code_2), label: 'Scan'),
-          NavigationDestination(icon: Icon(Icons.visibility_outlined), selectedIcon: Icon(Icons.visibility), label: 'Detect'),
+          NavigationDestination(icon: Icon(Icons.bar_chart_outlined), selectedIcon: Icon(Icons.bar_chart), label: 'Insights'),
           NavigationDestination(icon: Icon(Icons.image_outlined), selectedIcon: Icon(Icons.image), label: 'Studio'),
         ],
       ),
